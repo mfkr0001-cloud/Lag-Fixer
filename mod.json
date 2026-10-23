@@ -6,9 +6,9 @@
   },
   "id": "slavik.lagreducer",
   "name": "Lag Reducer",
-  "version": "v1.2.9",
+  "version": "v1.3.0",
   "developer": "Slavik",
-  "description": "Stronger particle-budget optimization with live settings in the level pause menu.",
+  "description": "Particle optimization plus optional low-graphics, glow, and particle visibility switches.",
   "tags": [
     "performance",
     "offline",
@@ -16,14 +16,14 @@
   ],
   "settings": {
     "enabled": {
-      "name": "Enable particle optimization",
-      "description": "Master switch. Turn off to restore normal particle budgets and emission rates.",
+      "name": "Enable particle budget optimization",
+      "description": "Master switch for reducing particle emission and capacity. Turn off to restore normal particle budgets.",
       "type": "bool",
       "default": true
     },
     "particle-draw-reduction": {
       "name": "Particle optimization strength",
-      "description": "0 = normal. 1-10 progressively reduce particle emission and max capacity; 8 keeps 10%, 9 keeps 6%, and 10 keeps about 3% of each emitter's original particle budget. High values remove most particle effects. Does not optimize every type of level object or glow.",
+      "description": "0 = normal. 1-10 reduce particle emission and maximum capacity; 10 keeps about 1% of each supported emitter budget (at least one slot for small emitters).",
       "type": "int",
       "default": 0,
       "min": 0,
@@ -35,6 +35,30 @@
         "arrow-step": 1,
         "input": false
       }
+    },
+    "ultra-low": {
+      "name": "Enable low-graphics mode",
+      "description": "Master switch for the extra visual reductions below. Applies when entering the main menu or a level and when changing this setting.",
+      "type": "bool",
+      "default": true
+    },
+    "disable-glow": {
+      "name": "Disable glow effects",
+      "description": "Turns off the game glow option while low-graphics mode is enabled. Some levels may look different.",
+      "type": "bool",
+      "default": true
+    },
+    "hide-particles": {
+      "name": "Hide game particles",
+      "description": "Turns off the game particle option while low-graphics mode is enabled. Use this for the strongest visual reduction.",
+      "type": "bool",
+      "default": true
+    },
+    "performance-logs": {
+      "name": "Performance logs",
+      "description": "Write a short diagnostic message to the Geode log when visual settings are applied.",
+      "type": "bool",
+      "default": false
     }
   }
 }
