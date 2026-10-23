@@ -1,0 +1,35 @@
+{
+  "geode": "v4.0.0",
+  "gd": {
+    "android": "2.2081",
+    "win": "2.2081"
+  },
+  "id": "slavik.lagreducer",
+  "name": "Lag Reducer",
+  "version": "v1.2.0",
+  "developer": "Slavik",
+  "description": "Configurable reduction of particle-system rendering load.",
+  "repository": "https://github.com/REPLACE_WITH_YOUR_USERNAME/LagReducer",
+  "tags": [
+    "performance",
+    "offline",
+    "utility"
+  ],
+  "settings": {
+    "particle-draw-reduction": {
+      "name": "Particle draw reduction",
+      "description": "Skips some particle-system draw calls. Higher values can cause visible flicker. Does not skip particle updates.",
+      "type": "int",
+      "default": 0,
+      "min": 0,
+      "max": 3,
+      "control": {
+        "slider": true,
+        "slider-step": 1,
+        "arrows": true,
+        "arrow-step": 1,
+        "input": false
+      }
+    }
+  }
+}
