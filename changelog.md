@@ -1,8 +1,13 @@
-# Changelog
-
-## v1.2.0
-- Add a configurable particle-system draw-call reduction level (off through skipping one of every four draw calls).
-- Store per-particle-system state using Geode's `Fields` mechanism rather than adding an ordinary data member to a `$modify` class.
-- Keep particle updates, gameplay physics, hitboxes, and level timing untouched.
-- Retain Android64 GitHub Actions build workflow.
-- Build status remains unverified until the SDK-backed CI build succeeds.
+Changelog
+v1.2.3
+Add a custom `logo.png` icon for the mod.
+Add a master toggle for particle draw reduction.
+Add level 4, skipping one out of every five particle draw calls.
+Keep reduction level 0 as the default so installing the mod does not intentionally change rendering.
+Retain the attempted Clang 21 `fmt` workaround; the Android build still needs CI verification.
+v1.2.2
+Add a workaround attempt for Clang 21 consteval errors in the `fmt` dependency during Android builds.
+v1.2.0
+Add configurable particle-system draw-call reduction levels.
+Keep particle updates, gameplay physics, hitboxes, and level timing untouched.
+Add Android64 GitHub Actions build workflow.
