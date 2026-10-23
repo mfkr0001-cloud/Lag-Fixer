@@ -6,10 +6,9 @@
   },
   "id": "slavik.lagreducer",
   "name": "Lag Reducer",
-  "version": "v1.2.4",
+  "version": "v1.2.5",
   "developer": "Slavik",
-  "description": "Optional particle draw staggering with an on/off switch and adjustable strength.",
-  "repository": "https://github.com/REPLACE_WITH_YOUR_USERNAME/Lag-Fixer",
+  "description": "Optional particle draw reduction with a corrected strength scale and an on/off switch.",
   "tags": [
     "performance",
     "offline",
@@ -18,13 +17,13 @@
   "settings": {
     "enabled": {
       "name": "Enable particle optimization",
-      "description": "Master switch. Disable this to render particles normally.",
+      "description": "Master switch. Turn off to restore normal particle drawing.",
       "type": "bool",
       "default": true
     },
     "particle-draw-reduction": {
       "name": "Particle draw reduction",
-      "description": "0 = off; 1-4 skip 1 in every 2-5 particle draw calls. Stronger values may hide visual cues or cause flicker.",
+      "description": "0 = off; 1 draws 1/2, 2 draws 1/3, 3 draws 1/4, 4 draws 1/5 of particle draw calls. Higher values may cause visible flicker or hide visual cues.",
       "type": "int",
       "default": 0,
       "min": 0,
