@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Android64 mod with Geode nightly SDK
+      - name: Build Android64 mod
         id: build
         uses: geode-sdk/build-geode-mod@main
         with:
