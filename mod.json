@@ -6,9 +6,9 @@
   },
   "id": "slavik.lagreducer",
   "name": "Lag Reducer",
-  "version": "v1.2.8",
+  "version": "v1.2.9",
   "developer": "Slavik",
-  "description": "Particle budget optimization with live settings in the level pause menu.",
+  "description": "Stronger particle-budget optimization with live settings in the level pause menu.",
   "tags": [
     "performance",
     "offline",
@@ -23,7 +23,7 @@
     },
     "particle-draw-reduction": {
       "name": "Particle optimization strength",
-      "description": "0 = normal. 1-10 progressively reduce particle emission and max capacity; 10 keeps about 20% of each emitter's original particle budget. High values may remove visual effects.",
+      "description": "0 = normal. 1-10 progressively reduce particle emission and max capacity; 8 keeps 10%, 9 keeps 6%, and 10 keeps about 3% of each emitter's original particle budget. High values remove most particle effects. Does not optimize every type of level object or glow.",
       "type": "int",
       "default": 0,
       "min": 0,
