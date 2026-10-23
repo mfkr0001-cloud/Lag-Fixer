@@ -1,19 +1,17 @@
-Lag Reducer — Geode v1.2.6
-A Geometry Dash / Geode mod that reduces cosmetic particle workload to try to improve frame stability in effect-heavy levels.
-Settings
-Enable particle optimization: master on/off switch.
-Particle optimization strength (`particle-draw-reduction`):
-`0`: normal particle rendering and updates.
-`1–3`: progressively fewer particle draw calls; simulation still updates every call.
-`4–7`: particle simulation updates every 2 calls using accumulated elapsed time.
-`8–10`: particle simulation updates every 3 calls; `10` draws approximately 1 in every 11 calls.
-The previous configuration key is retained so the existing setting stays compatible. After installing this build, set strength to `10` manually to test maximum optimization.
+Lag Reducer — Geode v1.2.8
+Experimental Geometry Dash / Geode mod that reduces the workload of particle systems on effect-heavy levels.
+What changed in v1.2.8
+Removes frame-by-frame particle draw skipping, which could make particle effects flicker or look choppy.
+Settings now scale both particle emission rate and the maximum particle budget. Strength `0` restores the original settings; strengths `1–10` progressively retain about `90%, 82%, 74%, 66%, 58%, 50%, 42%, 34%, 27%, 20%` of each emitter's original capacity/rate.
+When changing settings mid-level, the new emission rate applies immediately. The maximum particle capacity is reduced only when the live particle count is low enough to avoid shrinking the particle array below the number of active particles.
+Keeps the `Lag Reducer` shortcut in the level pause menu to open the normal Geode settings popup.
+Does not hook player physics, collision handling, hitboxes, or level timing.
 Important limitations
-This is an experimental particle optimization, not a guaranteed FPS fix. It does not hook player physics, collisions, hitboxes, or level timing. Particle effects can flicker or look choppy at high values. If frame drops are caused by other game systems, device throttling, or frame pacing, the player may still appear to jump forward. Use the lowest strength that helps, and compare with `0` if timing or music feels wrong.
-Android build using GitHub Actions
-Upload the project contents to your `Lag-Fixer` GitHub repository, including `.github` and `logo.png`.
-Push a commit or open Actions → Build Lag Reducer (Android).
-If the workflow succeeds, download the `LagReducer-Android64` artifact. It should contain the `.geode` file.
-The workflow uses `sdk: nightly`; `mod.json` records Geode `5.11.2` based on the previous successful build.
-Build verification
-This ZIP is a source project, not a compiled `.geode` package. This version has not been compiled or tested in Geometry Dash in this environment; run GitHub Actions before installing it.
+The mod is experimental and cannot guarantee 60 FPS on every level or device. This revision targets particle simulation/emission load rather than skipping visible draw frames. High strengths can substantially reduce visual effects. If stutters remain at strength `10`, the bottleneck may be elsewhere (level triggers, shaders, other mods, device throttling, or frame pacing).
+Android build with GitHub Actions
+Upload/commit the project contents to your `Lag-Fixer` repository, including `.github/workflows/android.yml` and `logo.png`.
+Open Actions and wait for Build Lag Reducer (Android) to finish.
+From a successful workflow run, download the `LagReducer-Android64` artifact containing the `.geode` file.
+The workflow uses `sdk: nightly`; `mod.json` retains Geode `5.11.2` and Geometry Dash `2.2081` from the currently successful setup.
+Verification
+This is a source ZIP, not a precompiled `.geode` package. It has not been compiled or tested inside Geometry Dash in this environment. Verify it with GitHub Actions before installing it.
