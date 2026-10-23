@@ -6,9 +6,9 @@
   },
   "id": "slavik.lagreducer",
   "name": "Lag Reducer",
-  "version": "v1.2.6",
+  "version": "v1.2.8",
   "developer": "Slavik",
-  "description": "Configurable particle workload optimization with strength levels 0-10.",
+  "description": "Particle budget optimization with live settings in the level pause menu.",
   "tags": [
     "performance",
     "offline",
@@ -17,13 +17,13 @@
   "settings": {
     "enabled": {
       "name": "Enable particle optimization",
-      "description": "Master switch. Turn off to restore normal particle drawing.",
+      "description": "Master switch. Turn off to restore normal particle budgets and emission rates.",
       "type": "bool",
       "default": true
     },
     "particle-draw-reduction": {
       "name": "Particle optimization strength",
-      "description": "0 = off; 1-10 reduce particle drawing, and levels 4+ also batch particle updates. Strong settings may make effects flicker or look choppy.",
+      "description": "0 = normal. 1-10 progressively reduce particle emission and max capacity; 10 keeps about 20% of each emitter's original particle budget. High values may remove visual effects.",
       "type": "int",
       "default": 0,
       "min": 0,
