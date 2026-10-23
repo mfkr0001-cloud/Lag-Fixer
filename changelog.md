@@ -1,4 +1,8 @@
 Changelog
+v1.2.4
+Stagger particle-system draw skipping across systems so they are less likely to disappear on the same frame.
+Keep reduction level 0 as the default; this remains a visual rendering workaround, not a guaranteed FPS fix.
+Align metadata with the SDK version used by the successful CI build (Geode SDK 5.11.2).
 v1.2.3
 Add a custom `logo.png` icon for the mod.
 Add a master toggle for particle draw reduction.
