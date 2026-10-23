@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.21)
-project(LagReducer VERSION 1.2.4 LANGUAGES C CXX)
+project(LagReducer VERSION 1.2.5 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Workaround attempt for fmt consteval failures seen with Clang 21 in CI.
-# The Android build still needs to be verified by GitHub Actions.
+# Kept from the previously successful CI setup for compatibility with its Clang/fmt toolchain.
 add_compile_definitions(FMT_USE_CONSTEVAL=0)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
