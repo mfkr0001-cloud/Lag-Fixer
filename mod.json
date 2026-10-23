@@ -6,9 +6,9 @@
   },
   "id": "slavik.lagreducer",
   "name": "Lag Reducer",
-  "version": "v1.2.5",
+  "version": "v1.2.6",
   "developer": "Slavik",
-  "description": "Optional particle draw reduction with a corrected strength scale and an on/off switch.",
+  "description": "Configurable particle workload optimization with strength levels 0-10.",
   "tags": [
     "performance",
     "offline",
@@ -22,12 +22,12 @@
       "default": true
     },
     "particle-draw-reduction": {
-      "name": "Particle draw reduction",
-      "description": "0 = off; 1 draws 1/2, 2 draws 1/3, 3 draws 1/4, 4 draws 1/5 of particle draw calls. Higher values may cause visible flicker or hide visual cues.",
+      "name": "Particle optimization strength",
+      "description": "0 = off; 1-10 reduce particle drawing, and levels 4+ also batch particle updates. Strong settings may make effects flicker or look choppy.",
       "type": "int",
       "default": 0,
       "min": 0,
-      "max": 4,
+      "max": 10,
       "control": {
         "slider": true,
         "slider-step": 1,
