@@ -1,5 +1,4 @@
-# Lag Reducer 1.2.0
-
-Configurable particle-system draw-call skipping for Geometry Dash. Disabled by default. Does not skip particle updates or intentionally change physics, hitboxes, or level timing.
-
-Build/runtime status: the Android C++ build has not yet been verified in this environment; see README.md for the SDK hook compatibility caveat.
+Lag Reducer v1.2.3
+A configurable rendering workaround for particle effects in Geometry Dash. Includes a master on/off switch and adjustable draw-skipping strength.
+The default reduction level is 0. Stronger levels can cause particle flickering or hide visual cues. The mod does not intentionally alter gameplay physics, hitboxes, particle simulation, or level timing.
+The Clang 21 / fmt workaround is unverified until the Android64 GitHub Actions build succeeds.
