@@ -21,8 +21,8 @@ std::int64_t g_strength = 0;
 // maximum number of simultaneously active particles. Unlike draw-call skipping, this
 // does not deliberately make visible particles blink on/off every few frames.
 constexpr std::array<float, 11> kParticleBudget = {
-    1.00f, 0.90f, 0.82f, 0.74f, 0.66f, 0.58f,
-    0.50f, 0.42f, 0.34f, 0.27f, 0.20f
+    1.00f, 0.85f, 0.72f, 0.60f, 0.48f, 0.36f,
+    0.25f, 0.16f, 0.10f, 0.06f, 0.03f
 };
 
 std::int64_t activeStrength() {
@@ -134,5 +134,5 @@ $on_mod(Loaded) {
         g_strength = std::clamp<std::int64_t>(value, 0, 10);
     });
 
-    log::info("Lag Reducer v1.2.8 loaded. Particle budgets replace per-frame draw skipping; pause settings shortcut enabled.");
+    log::info("Lag Reducer v1.2.9 loaded. Aggressive particle budget scaling enabled; pause settings shortcut enabled.");
 }
