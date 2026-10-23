@@ -127,10 +127,10 @@ $on_mod(Loaded) {
         mod->getSettingValue<std::int64_t>("particle-draw-reduction"), 0, 10
     );
 
-    listenForSettingChanges("enabled", [](bool value) {
+    listenForSettingChanges<bool>("enabled", [](bool value) {
         g_enabled = value;
     });
-    listenForSettingChanges("particle-draw-reduction", [](std::int64_t value) {
+    listenForSettingChanges<std::int64_t>("particle-draw-reduction", [](std::int64_t value) {
         g_strength = std::clamp<std::int64_t>(value, 0, 10);
     });
 
