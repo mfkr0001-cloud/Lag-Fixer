@@ -6,17 +6,36 @@
   },
   "id": "slavik.lagreducer",
   "name": "Lag Reducer",
-  "version": "v1.2.1",
+  "version": "v1.2.3",
   "developer": "Slavik",
-  "description": "Reduces particle rendering to help with performance drops.",
+  "description": "Optional particle rendering reduction with an on/off switch and adjustable strength.",
+  "repository": "https://github.com/REPLACE_WITH_YOUR_USERNAME/Lag-Fixer",
+  "tags": [
+    "performance",
+    "offline",
+    "utility"
+  ],
   "settings": {
+    "enabled": {
+      "name": "Enable particle optimization",
+      "description": "Master switch. Disable this to render particles normally.",
+      "type": "bool",
+      "default": true
+    },
     "particle-draw-reduction": {
-      "name": "Particle Draw Reduction",
-      "description": "Skip some particle draw calls. May cause visual flickering. Does not change physics.",
+      "name": "Particle draw reduction",
+      "description": "0 = off; 1-4 skip 1 in every 2-5 particle draw calls. Stronger values may hide visual cues or cause flicker.",
       "type": "int",
       "default": 0,
       "min": 0,
-      "max": 3
+      "max": 4,
+      "control": {
+        "slider": true,
+        "slider-step": 1,
+        "arrows": true,
+        "arrow-step": 1,
+        "input": false
+      }
     }
   }
 }
