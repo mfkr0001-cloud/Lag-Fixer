@@ -1,21 +1,20 @@
-
 cmake_minimum_required(VERSION 3.21)
+project(LagReducer VERSION 1.2.4 LANGUAGES C CXX)
 
-project(LagReducer VERSION 1.2.2)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Workaround for fmt consteval errors with Clang 21
+# Workaround attempt for fmt consteval failures seen with Clang 21 in CI.
+# The Android build still needs to be verified by GitHub Actions.
 add_compile_definitions(FMT_USE_CONSTEVAL=0)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-# Load the Geode SDK
-if (DEFINED ENV{GEODE_SDK})
-    add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
-else()
-    message(FATAL_ERROR "GEODE_SDK environment variable is not set!")
+if (NOT DEFINED ENV{GEODE_SDK})
+    message(FATAL_ERROR "Unable to find Geode SDK. Define GEODE_SDK to point to your installed Geode SDK.")
 endif()
 
-# Mod source files
-file(GLOB_RECURSE SOURCES src/*.cpp)
+add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
-
 setup_geode_mod(${PROJECT_NAME})
