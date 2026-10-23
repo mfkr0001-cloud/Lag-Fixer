@@ -1,31 +1,43 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCParticleSystemQuad.hpp>
+#include <cstdint>
 
 using namespace geode::prelude;
 
-// Rendering-only optimization. Particle simulation/update, collision, player
-// physics, and level timing are not modified. A nonzero value may cause flicker.
+// Rendering-only workaround. This hook skips selected particle draw calls;
+// it does not skip particle simulation/update and does not intentionally alter
+// player physics, collision, hitboxes, or level timing. Some effects can flicker.
 class $modify(LagReducerParticleSystem, cocos2d::CCParticleSystemQuad) {
     struct Fields {
-        // Unsigned wraparound is defined and avoids signed overflow in long sessions.
-        uint32_t drawCounter = 0;
+        // Per-particle-system counter; unsigned wraparound is defined.
+        std::uint32_t drawCounter = 0;
     };
 
     void draw() {
-        const auto reduction = Mod::get()->getSettingValue<int64_t>("particle-draw-reduction");
+        auto* mod = Mod::get();
+
+        // Master switch: preserve normal rendering when optimization is disabled.
+        if (!mod->getSettingValue<bool>("enabled")) {
+            cocos2d::CCParticleSystemQuad::draw();
+            return;
+        }
+
+        const auto reduction = mod->getSettingValue<std::int64_t>("particle-draw-reduction");
         if (reduction > 0) {
-            // Values 1..3 skip 1 of every 2..4 draw calls for each system.
-            const int interval = static_cast<int>(reduction) + 1;
-            const bool skipThisDraw = (m_fields->drawCounter % static_cast<uint32_t>(interval)) == static_cast<uint32_t>(interval - 1);
+            // Levels 1..4 skip 1 out of every 2..5 draw calls per system.
+            const auto interval = static_cast<std::uint32_t>(reduction + 1);
+            const bool skipThisDraw =
+                (m_fields->drawCounter % interval) == (interval - 1);
             ++m_fields->drawCounter;
             if (skipThisDraw) {
                 return;
             }
         }
+
         cocos2d::CCParticleSystemQuad::draw();
     }
 };
 
 $on_mod(Loaded) {
-    log::info("Lag Reducer 1.2.0 loaded. Particle draw reduction defaults to off.");
+    log::info("Lag Reducer v1.2.3 loaded. Particle draw reduction defaults to level 0.");
 }
