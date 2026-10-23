@@ -1,3 +1,4 @@
+
 {
   "geode": "4.0.0",
   "gd": {
@@ -9,7 +10,7 @@
   "version": "v1.2.3",
   "developer": "Slavik",
   "description": "Optional particle rendering reduction with an on/off switch and adjustable strength.",
-  "repository": "https://github.com/REPLACE_WITH_YOUR_USERNAME/Lag-Fixer",
+  "repository": "https://github.com/ТВОЙ_НИК/Lag-Fixer",
   "tags": [
     "performance",
     "offline",
@@ -28,14 +29,7 @@
       "type": "int",
       "default": 0,
       "min": 0,
-      "max": 4,
-      "control": {
-        "slider": true,
-        "slider-step": 1,
-        "arrows": true,
-        "arrow-step": 1,
-        "input": false
-      }
+      "max": 4
     }
   }
 }
